@@ -15,8 +15,18 @@ public class BancoDeDados {
     public void cadastrar(Item item) {
         try {
             OutputStream localizarArquivo = new FileOutputStream("medicamentos.txt", true); //se nao existir sera criado
-            OutputStreamWriter osw;
-            BufferedWriter bw;
+            OutputStreamWriter preparaArquivo = new OutputStreamWriter(localizarArquivo); //prepara para a escrita
+            BufferedWriter escreveNoArquivo = new BufferedWriter(preparaArquivo);
+
+            String linha = item.getNome() + ", " + item.getQuantidade() +", " + item.getTipo();
+            escreveNoArquivo.write(linha);
+            escreveNoArquivo.newLine(); //evita sobrescrever o arquivo
+
+            escreveNoArquivo.close();
+            preparaArquivo.close();
+            escreveNoArquivo.close();
+
+            System.out.println("O medicamento " + item.getNome() + " foi cadastrado com sucesso!");
         } catch (Exception e) {
             System.out.println("O arquivo não foi cadastrado.");
             System.out.println(e + e.getMessage());}
