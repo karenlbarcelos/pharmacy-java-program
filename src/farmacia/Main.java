@@ -11,6 +11,6 @@ public class Main {
         Item paracetamol = new Item("Paracetamol 250mg", 10, "Caixa de 12");
 
         BancoDeDados banco = new BancoDeDados();
-        banco.cadastrar(dipirona); //teste
+        banco.cadastrar(dipirona);
     }
 }
