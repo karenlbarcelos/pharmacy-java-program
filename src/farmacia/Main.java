@@ -13,7 +13,7 @@ public class Main {
         ArrayList<Item> itens = banco.ler();
 
         for(int i= 0; i<itens.size(); i++){
-            System.out.println("Index = " + i + " - Nome: " + itens.get(i).getNome() + ", Quantidade: " + itens.get(i).getQuantidade()
+            System.out.println("Código = " + i + " - Nome: " + itens.get(i).getNome() + ", Quantidade: " + itens.get(i).getQuantidade()
                     + "Tipo: " + itens.get(i).getTipo());
 
         }

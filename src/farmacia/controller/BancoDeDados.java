@@ -67,7 +67,7 @@ public class BancoDeDados {
             String[] elementos = new String[3];
 
             for (int i = 0; i < linhas.size(); i++) {
-                elementos = linhas.get(i).split(",");
+                elementos = linhas.get(i).split(", ");
                 int quantidade = Integer.parseInt(elementos[1]); //conversão do tipo, de String para int
                 item = new Item(elementos[0], quantidade, elementos[2]);
                 itens.add(item);
