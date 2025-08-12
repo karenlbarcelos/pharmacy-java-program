@@ -37,7 +37,9 @@ public class BancoDeDados {
     public void editar(int codigo) {
     }
 
-    public void pesquisar(int codigo) {
+    public Item pesquisar(int codigo, ArrayList<Item> itens) {
+        Item item = itens.get(codigo);
+        return item;
     }
 
     public void excluir(int codigo) {
