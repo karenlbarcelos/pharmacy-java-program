@@ -10,12 +10,11 @@ public class BancoDeDados {
     private Item item;
 
     public BancoDeDados() {
-
     }
 
-    public void cadastrar(Item item) {
+    public void cadastrar(Item item, boolean opcao) {
         try {
-            OutputStream localizarArquivo = new FileOutputStream("medicamentos.txt", true); //se nao existir sera criado
+            OutputStream localizarArquivo = new FileOutputStream("medicamentos.txt", opcao); //se nao existir sera criado
             OutputStreamWriter preparaArquivo = new OutputStreamWriter(localizarArquivo); //prepara para a escrita
             BufferedWriter escreveNoArquivo = new BufferedWriter(preparaArquivo);
 
@@ -42,11 +41,19 @@ public class BancoDeDados {
             Item item = itens.get(codigo);
             return item;
         } catch (Exception e) {
-        return null;
+            return null;
         }
     }
 
-    public void excluir(int codigo) {
+    public void excluir(int codigo, ArrayList<Item> itens) {
+        itens.remove(codigo);
+        for (int i = 0; i < itens.size(); i++) {
+            if (i == 0) {
+                cadastrar(itens.get(i), false);
+            } else {
+                cadastrar(itens.get(i), true);
+            }
+        }
     }
 
     //leitura de arquivo
@@ -73,7 +80,7 @@ public class BancoDeDados {
             String[] elementos = new String[3];
 
             for (int i = 0; i < linhas.size(); i++) {
-                elementos = linhas.get(i).split(", ");
+                elementos = linhas.get(i).split(",");
                 int quantidade = Integer.parseInt(elementos[1]); //conversão do tipo, de String para int
                 item = new Item(elementos[0], quantidade, elementos[2]);
                 itens.add(item);
