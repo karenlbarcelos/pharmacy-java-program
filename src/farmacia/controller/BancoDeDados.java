@@ -38,8 +38,12 @@ public class BancoDeDados {
     }
 
     public Item pesquisar(int codigo, ArrayList<Item> itens) {
-        Item item = itens.get(codigo);
-        return item;
+        try {
+            Item item = itens.get(codigo);
+            return item;
+        } catch (Exception e) {
+        return null;
+        }
     }
 
     public void excluir(int codigo) {
