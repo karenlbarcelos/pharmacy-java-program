@@ -12,6 +12,6 @@ public class Main {
         BancoDeDados banco = new BancoDeDados();
         ArrayList<Item> itens = banco.ler();
 
-        //banco.excluir(1, itens);
+        banco.editar(2, itens);
     }
 }

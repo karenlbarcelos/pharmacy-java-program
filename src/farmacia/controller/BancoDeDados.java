@@ -18,7 +18,7 @@ public class BancoDeDados {
             OutputStreamWriter preparaArquivo = new OutputStreamWriter(localizarArquivo); //prepara para a escrita
             BufferedWriter escreveNoArquivo = new BufferedWriter(preparaArquivo);
 
-            String linha = item.getNome() + ", " + item.getQuantidade() + ", " + item.getTipo();
+            String linha = item.getNome() + "," + item.getQuantidade() + "," + item.getTipo();
             escreveNoArquivo.write(linha);
             escreveNoArquivo.newLine(); //evita sobrescrever o arquivo
 
@@ -35,9 +35,10 @@ public class BancoDeDados {
 
     public void editar(int codigo, ArrayList<Item> itens) {
         Item item = itens.get(codigo);
-        item.setNome("Dipirona");
-        item.setQuantidade(300);
-        item.setTipo("Caixa de 6");
+        item.setNome("Ibuprofeno");
+        itens.remove(codigo);
+        item.setQuantidade(2);
+        item.setTipo("FRasco de 50ml");
 
         itens.add(codigo, item);
 
@@ -94,7 +95,7 @@ public class BancoDeDados {
             String[] elementos = new String[3];
 
             for (int i = 0; i < linhas.size(); i++) {
-                elementos = linhas.get(i).split(", ");
+                elementos = linhas.get(i).split(",");
                 int quantidade = Integer.parseInt(elementos[1]); //conversão do tipo, de String para int
                 item = new Item(elementos[0], quantidade, elementos[2]);
                 itens.add(item);
