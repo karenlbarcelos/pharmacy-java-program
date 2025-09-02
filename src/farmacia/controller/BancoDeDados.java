@@ -33,7 +33,21 @@ public class BancoDeDados {
         }
     }
 
-    public void editar(int codigo) {
+    public void editar(int codigo, ArrayList<Item> itens) {
+        Item item = itens.get(codigo);
+        item.setNome("Dipirona");
+        item.setQuantidade(300);
+        item.setTipo("Caixa de 6");
+
+        itens.add(codigo, item);
+
+        for (int i = 0; i < itens.size(); i++) {
+            if (i == 0) {
+                cadastrar(itens.get(i), false);
+            } else {
+                cadastrar(itens.get(i), true);
+            }
+        }
     }
 
     public Item pesquisar(int codigo, ArrayList<Item> itens) {
