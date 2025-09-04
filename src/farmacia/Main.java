@@ -11,7 +11,5 @@ public class Main {
 
         BancoDeDados banco = new BancoDeDados();
         ArrayList<Item> itens = banco.ler();
-
-        banco.editar(2, itens);
     }
 }
